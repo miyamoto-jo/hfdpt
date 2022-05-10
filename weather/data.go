@@ -4,9 +4,9 @@ import "fmt"
 
 type WeatherData struct {
 	observers   []Observer
-	temperature float32
-	humidity    float32
-	pressure    float32
+	temperature float64
+	humidity    float64
+	pressure    float64
 }
 
 func NewWeatherData() *WeatherData {
@@ -42,7 +42,7 @@ func (m *WeatherData) MeasurementsChanged() {
 }
 
 // 気象観測所側で更新された内容をreadする処理
-func (m *WeatherData) SetMeasurements(temperature, humidity, pressure float32) {
+func (m *WeatherData) SetMeasurements(temperature, humidity, pressure float64) {
 	m.temperature = temperature
 	m.humidity = humidity
 	m.pressure = pressure

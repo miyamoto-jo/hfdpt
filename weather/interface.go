@@ -7,11 +7,5 @@ type Subject interface {
 }
 
 type Observer interface {
-	Update(temp, humidity, pressure float32)
-	RegisterSubject() // Subjectに登録
-	RemoveSubject()   // Subjectから削除
-}
-
-type DisplayElement interface {
-	Display()
+	Update(temp, humidity, pressure float64)
 }
