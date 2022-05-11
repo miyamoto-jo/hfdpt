@@ -3,18 +3,18 @@ package disp
 import (
 	"fmt"
 
-	"github.com/miyamoto-jo/hfdp/weather"
+	"github.com/miyamoto-jo/hfdp/observer"
 )
 
 // 気象予報
 type ForecastDisplay struct {
-	weatherData weather.Subject
+	weatherData observer.Subject
 	temperature float64
 	humidity    float64
 	pressure    float64
 }
 
-func NewForecastDisplay(wd weather.Subject) *ForecastDisplay {
+func NewForecastDisplay(wd observer.Subject) *ForecastDisplay {
 	fd := &ForecastDisplay{
 		weatherData: wd,
 	}

@@ -3,16 +3,16 @@ package disp
 import (
 	"fmt"
 
-	"github.com/miyamoto-jo/hfdp/weather"
+	"github.com/miyamoto-jo/hfdp/observer"
 )
 
 // 熱指数
 type HeatIndexDisplay struct {
-	weatherData weather.Subject
+	weatherData observer.Subject
 	heatindex   float64
 }
 
-func NewHeatIndexDisplay(wd weather.Subject) *HeatIndexDisplay {
+func NewHeatIndexDisplay(wd observer.Subject) *HeatIndexDisplay {
 	hi := &HeatIndexDisplay{
 		weatherData: wd,
 	}

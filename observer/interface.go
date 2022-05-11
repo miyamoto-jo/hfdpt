@@ -1,4 +1,4 @@
-package weather
+package observer
 
 type Subject interface {
 	RegisterObserver(o Observer) // オブザーバーの登録

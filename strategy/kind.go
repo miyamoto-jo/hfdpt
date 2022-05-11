@@ -1,4 +1,4 @@
-package duck
+package strategy
 
 var (
 	MallardDuck = New(`マガモ`, &Quack{}, &FlyWithWings{})

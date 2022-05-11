@@ -1,15 +1,15 @@
-package weather_test
+package observer_test
 
 import (
 	"testing"
 
-	"github.com/miyamoto-jo/hfdp/weather"
-	"github.com/miyamoto-jo/hfdp/weather/disp"
+	"github.com/miyamoto-jo/hfdp/observer"
+	"github.com/miyamoto-jo/hfdp/observer/disp"
 )
 
 var (
 	// Subject
-	wd = weather.NewWeatherData()
+	wd = observer.NewWeatherData()
 
 	// Observers
 	ccd = disp.NewCurrentConditionDisplay(wd) // 現在の天気
@@ -17,7 +17,7 @@ var (
 	fd  = disp.NewForecastDisplay(wd)         // 気象予報
 	hi  = disp.NewHeatIndexDisplay(wd)        // 熱指数
 
-	obList = []weather.Observer{
+	obList = []observer.Observer{
 		ccd, sd, fd, hi,
 	}
 )
@@ -40,7 +40,7 @@ func TestWeatherStation(t *testing.T) {
 }
 
 // オブザーバーを登録
-func regist(wd weather.Subject) {
+func regist(wd observer.Subject) {
 	for _, ob := range obList {
 		wd.RegisterObserver(ob)
 	}

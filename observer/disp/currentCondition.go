@@ -3,17 +3,17 @@ package disp
 import (
 	"fmt"
 
-	"github.com/miyamoto-jo/hfdp/weather"
+	"github.com/miyamoto-jo/hfdp/observer"
 )
 
 // 現在の気温情報
 type CurrentConditionDisplay struct {
-	weatherData weather.Subject
+	weatherData observer.Subject
 	temperature float64
 	humidity    float64
 }
 
-func NewCurrentConditionDisplay(wd weather.Subject) *CurrentConditionDisplay {
+func NewCurrentConditionDisplay(wd observer.Subject) *CurrentConditionDisplay {
 	ccd := &CurrentConditionDisplay{
 		weatherData: wd,
 	}

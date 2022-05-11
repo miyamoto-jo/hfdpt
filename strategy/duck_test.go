@@ -1,16 +1,16 @@
-package duck_test
+package strategy_test
 
 import (
 	"fmt"
 	"testing"
 
-	"github.com/miyamoto-jo/hfdp/duck"
+	"github.com/miyamoto-jo/hfdp/strategy"
 )
 
 // いろんな種類のカモの挙動を確認
 func TestDucks(t *testing.T) {
-	ducks := []duck.Duck{
-		*duck.MallardDuck, *duck.RedHeadDuck, *duck.RubberDuck, *duck.DecoyDuck,
+	ducks := []strategy.Duck{
+		*strategy.MallardDuck, *strategy.RedHeadDuck, *strategy.RubberDuck, *strategy.DecoyDuck,
 	}
 
 	for _, d := range ducks {
@@ -36,7 +36,7 @@ func (m *RoboQuack) Quack() {
 
 // 独自のカモインスタンスを生成
 func TestNewDuck(t *testing.T) {
-	roboDuck := duck.New(`ロボットカモ`, &RoboQuack{}, &FlyRocket{})
+	roboDuck := strategy.New(`ロボットカモ`, &RoboQuack{}, &FlyRocket{})
 
 	roboDuck.DisplayName()
 	roboDuck.Swim()
