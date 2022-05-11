@@ -21,10 +21,12 @@ func NewForecastDisplay(wd observer.Subject) *ForecastDisplay {
 	return fd
 }
 
-func (m *ForecastDisplay) Update(temp, humidity, pressure float64) {
-	m.temperature = temp
-	m.humidity = humidity
-	m.pressure = pressure
+func (m *ForecastDisplay) Update(s observer.Subject) {
+	if w, ok := s.(*observer.WeatherData); ok {
+		m.temperature = w.GetTemperature()
+		m.humidity = w.GetHumidity()
+		m.pressure = w.GetPressure()
+	}
 	m.Display()
 }
 

@@ -21,10 +21,12 @@ func NewStatisticsDisplay(wd observer.Subject) *StatisticsDisplay {
 	return sd
 }
 
-func (m *StatisticsDisplay) Update(temp, humidity, pressure float64) {
-	m.temperature = temp
-	m.humidity = humidity
-	m.pressure = pressure
+func (m *StatisticsDisplay) Update(s observer.Subject) {
+	if w, ok := s.(*observer.WeatherData); ok {
+		m.temperature = w.GetTemperature()
+		m.humidity = w.GetHumidity()
+		m.pressure = w.GetPressure()
+	}
 	m.Display()
 }
 

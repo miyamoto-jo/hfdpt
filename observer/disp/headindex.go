@@ -19,9 +19,11 @@ func NewHeatIndexDisplay(wd observer.Subject) *HeatIndexDisplay {
 	return hi
 }
 
-func (m *HeatIndexDisplay) Update(temp, humidity, pressure float64) {
-	temp = 1.8*temp + 32 // 摂氏から華氏に変換
-	m.heatindex = m.computeHeatIndex(temp, humidity)
+func (m *HeatIndexDisplay) Update(s observer.Subject) {
+	if w, ok := s.(*observer.WeatherData); ok {
+		temp := 1.8*w.GetTemperature() + 32 // 摂氏から華氏に変換
+		m.heatindex = m.computeHeatIndex(temp, w.GetHumidity())
+	}
 	m.Display()
 }
 

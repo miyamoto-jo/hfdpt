@@ -4,9 +4,9 @@ import "fmt"
 
 type WeatherData struct {
 	observers   []Observer
-	temperature float64
-	humidity    float64
-	pressure    float64
+	temperature float64 // 温度
+	humidity    float64 // 湿度
+	pressure    float64 // 気圧
 }
 
 func NewWeatherData() *WeatherData {
@@ -33,7 +33,7 @@ func (m *WeatherData) RemoveObserver(o Observer) {
 // オブザーバーらに通知
 func (m *WeatherData) NotifyObservers() {
 	for _, ob := range m.observers {
-		ob.Update(m.temperature, m.humidity, m.pressure)
+		ob.Update(m)
 	}
 }
 
@@ -48,4 +48,14 @@ func (m *WeatherData) SetMeasurements(temperature, humidity, pressure float64) {
 	m.pressure = pressure
 	m.MeasurementsChanged() // Observerに上記変更をkickする
 	fmt.Println("-------------------------------------------------------")
+}
+
+func (m *WeatherData) GetTemperature() float64 {
+	return m.temperature
+}
+func (m *WeatherData) GetHumidity() float64 {
+	return m.humidity
+}
+func (m *WeatherData) GetPressure() float64 {
+	return m.pressure
 }

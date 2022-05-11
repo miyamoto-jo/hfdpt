@@ -7,5 +7,5 @@ type Subject interface {
 }
 
 type Observer interface {
-	Update(temp, humidity, pressure float64)
+	Update(s Subject)
 }

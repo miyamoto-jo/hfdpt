@@ -20,9 +20,11 @@ func NewCurrentConditionDisplay(wd observer.Subject) *CurrentConditionDisplay {
 	return ccd
 }
 
-func (m *CurrentConditionDisplay) Update(temp, humidity, _ float64) {
-	m.temperature = temp
-	m.humidity = humidity
+func (m *CurrentConditionDisplay) Update(s observer.Subject) {
+	if w, ok := s.(*observer.WeatherData); ok {
+		m.temperature = w.GetTemperature()
+		m.humidity = w.GetHumidity()
+	}
 	m.Display()
 }
 
